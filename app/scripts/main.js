@@ -11,9 +11,7 @@ function tab2Mp3Constructor(){
 
   this.tabs = {};
 
-  chrome.runtime.onInstalled.addListener(function (details) {
-    // console.log('previousVersion', details.previousVersion);
-  });
+  chrome.runtime.onInstalled.addListener(function (details) {});
 
   // if browseraction
   if (chrome.pageAction) {
@@ -39,13 +37,12 @@ function getPort(){
 }
 
 function clear(instance) {
-  var tabIndex = this.tabs.indexOf(instance);
-  delete this.tabs[tabIndex] ;
+  delete this.tabs[instance.tabId] ;
 }
 
 function messageEvent(msg){
   if (!this.tabs[msg.tabId]) {
-    this.tabs[msg.tabId] = new TabRecorder(this, msg);
+    this.tabs[msg.tabId] = new TabRecorder(this, msg.tabId);
   }
   if (typeof this.tabs[msg.tabId][msg['action']] === "function") {
     this.tabs[msg.tabId][msg['action']].call(this.tabs[msg.tabId], msg.args);
