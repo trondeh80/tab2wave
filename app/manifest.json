@@ -1,0 +1,27 @@
+{
+  	"name": "Tab 2 Wave",
+  	"description": "This extension records whats playing in your current tab, and will send you a wave file of the recording when done.",
+  	"version": "1",
+  	"manifest_version": 2,
+  	"default_locale": "en",
+    "permissions": ["tabCapture", "activeTab"],
+    "page_action": {
+      "default_icon": {
+        "16": "images/icon-16.png",
+        "128": "images/icon-128.png"
+      },
+      "default_title": "tab2wave",
+      "default_popup": "popup.html"
+    },
+  	"icons": {
+  		"16": "images/icon-16.png",
+  		"128": "images/icon-128.png"
+  	},
+    "background": {
+      "scripts": [
+        "scripts/vendor/recorder.js",
+        "scripts/main.js",
+        "scripts/TabRecorder.js"
+      ]
+    }
+  }
