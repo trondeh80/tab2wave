@@ -1,17 +1,15 @@
 'use strict';
 
-var Extension = tab2Mp3Constructor ;
-Extension.prototype.messageEvent = messageEvent;
-Extension.prototype.getPort = getPort;
-Extension.prototype.clear = clear;
+var Tab2Wave = tab2WaveConstructor ;
+Tab2Wave.prototype.messageEvent = messageEvent;
+Tab2Wave.prototype.getPort = getPort;
+Tab2Wave.prototype.clear = clear;
 
-var Ext = new Extension();
+var tab = new Tab2Wave();
 
-function tab2Mp3Constructor(){
+function tab2WaveConstructor(){
 
   this.tabs = {};
-
-  chrome.runtime.onInstalled.addListener(function (details) {});
 
   // if browseraction
   if (chrome.pageAction) {
@@ -30,6 +28,8 @@ function tab2Mp3Constructor(){
       this.port.onMessage.addListener(messageEvent.bind(this));
     }.bind(this));
   }
+
+  chrome.runtime.onInstalled.addListener(function (details) {});
 }
 
 function getPort(){

@@ -15,11 +15,11 @@
     $(document).ready(addListeners.bind(this));
 
     this.sendMessage({
-      action:'tabActivated'
+      action: 'tabActivated'
     })
   }
 
-  function setStatus(args){
+  function setStatus(args) {
     if (args.isActive) {
       showActiveRecording();
     } else {
@@ -27,12 +27,12 @@
     }
   }
 
-  function toggleRecording(){
+  function toggleRecording() {
     if (!$("#record").hasClass('recording')) {
-      this.sendMessage({action: 'startRecording'}) ;
+      this.sendMessage({action: 'startRecording'});
       showActiveRecording();
     } else {
-      this.sendMessage({action: 'stopCapture'}) ;
+      this.sendMessage({action: 'stopCapture'});
       showStoppedRecording();
     }
   }
@@ -43,12 +43,12 @@
   }
 
 
-  function showActiveRecording(){
-    $('#record').addClass('recording') ;
+  function showActiveRecording() {
+    $('#record').addClass('recording');
   }
 
-  function showStoppedRecording(){
-    $('#record').removeClass('recording') ;
+  function showStoppedRecording() {
+    $('#record').removeClass('recording');
   }
 
   function getPort() {
